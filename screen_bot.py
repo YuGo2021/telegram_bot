@@ -40,6 +40,7 @@ chrome_path = os.path.normpath(homepath + '/AppData/Local/Google/Chrome/User Dat
 
 
 #bot_token = getenv("BOT_TOKEN")
+
 load_dotenv("bot_api.env")
 bot_token = getenv("TOKEN_BOT")
 
