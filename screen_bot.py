@@ -12,6 +12,12 @@ import os
 from winreg import *
 import time
 from dotenv import load_dotenv
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+
+#s=Service('chromedriver.exe')
+s = Service(ChromeDriverManager().install())
 
 time.sleep(10)
 
@@ -51,17 +57,21 @@ bot = telebot.TeleBot(bot_token, threaded = False)
 
 #настраиваем браузер для корректной работы в headless режиме
 
-options = webdriver.ChromeOptions()
+#options = webdriver.ChromeOptions()
+options = Options()
 #options.add_argument("user-data-dir=C:\\Users\\yuri.golubev\\AppData\\Local\\Google\\Chrome\\User Data\\Default")
 #options.add_argument("user-data-dir=C:\\Users\\golub\\AppData\\Local\\Google\\Chrome\\User Data\\Default")
 options.add_argument(f"user-data-dir={chrome_path}")
 
-options.add_argument('--headless')
+#options.add_argument('--headless')
+options.add_argument('--headless=new')
 options.add_argument('--disable-gpu')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--no-sandbox')
 
-options1 = webdriver.ChromeOptions()
+#options1 = webdriver.ChromeOptions()
+options1 = Options()
+
 #options1.add_argument("user-data-dir=C:\\Users\\yuri.golubev\\AppData\\Local\\Google\\Chrome\\User Data\\Default")
 options1.add_argument(f"user-data-dir={chrome_path}")
 
@@ -251,7 +261,7 @@ def handle_text(message):
         if message.text.strip() == 'Общий борд КЦ' :
             #answer = random.choice(facts)
             uid = message.chat.id
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(options=options, service=s)
             driver.set_window_size(1920, 1080)
             now = datetime.now()
             if 'send_time1' not in globals():
@@ -276,7 +286,7 @@ def handle_text(message):
 
         elif message.text.strip() == 'Врачи':
             uid = message.chat.id
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(options=options, service=s)
             driver.set_window_size(1920, 1080)
             now = datetime.now()
             if 'send_time2' not in globals():
@@ -299,7 +309,7 @@ def handle_text(message):
                 #answer = random.choice(thinks)
         elif message.text.strip() == 'ВО':
             uid = message.chat.id
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(options=options, service=s)
             driver.set_window_size(1920, 1080)
             now = datetime.now()
             if 'send_time3' not in globals():
@@ -319,7 +329,7 @@ def handle_text(message):
             #driver.quit()
         elif message.text.strip() == 'ОО':
             uid = message.chat.id
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(options=options, service=s)
             driver.set_window_size(1920, 1080)
             now = datetime.now()
             if 'send_time4' not in globals():
@@ -338,7 +348,7 @@ def handle_text(message):
             bot.send_photo(uid, photo=open(photo_path4, 'rb'))
         elif message.text.strip() == 'Дежурный':
             uid = message.chat.id
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(options=options, service=s)
             driver.set_window_size(1920, 1200)
             now = datetime.now()
             if 'send_time5' not in globals():
@@ -358,7 +368,7 @@ def handle_text(message):
             #driver.quit()
         elif message.text.strip() == 'B2B':
             uid = message.chat.id
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(options=options, service=s)
             driver.set_window_size(1920, 1200)
             now = datetime.now()
             if 'send_time6' not in globals():
@@ -381,7 +391,7 @@ def handle_text(message):
         elif message.text.strip() == 'отладка':
             uid = message.chat.id
             photo_path = "Image\\" + str(random.randint(10000000, 99999999)) + '.png'
-            driver = webdriver.Chrome(chrome_options=options1)
+            driver = webdriver.Chrome(options=options1, service=s)
             driver.set_window_size(1920, 1080)
             driver.get("https://grafana2.gemotest.ru:3000/d/i_tq1wY7z/glavnaia-2?orgId=1&refresh=5m")
             #driver.get("https://yandex.ru/")
@@ -391,7 +401,7 @@ def handle_text(message):
         elif message.text.strip() == 'тест':
             uid = message.chat.id
             photo_path = "Image\\" + str(random.randint(10000000, 99999999)) + '.png'
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(options=options, service=s)
             driver.set_window_size(1920, 1080)
             #driver.get("https://grafana2.gemotest.ru:3000/d/i_tq1wY7z/glavnaia-2?orgId=1&refresh=5m")
             driver.get("https://yandex.ru/")
