@@ -16,7 +16,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
-#s=Service('chromedriver.exe')
+#s = Service('chromedriver.exe')
 s = Service(ChromeDriverManager().install())
 
 time.sleep(10)
@@ -68,6 +68,7 @@ options.add_argument('--headless=new')
 options.add_argument('--disable-gpu')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--no-sandbox')
+options.add_experimental_option("excludeSwitches", ["enable-logging"]) # для исключения ошибки по логированию USD
 
 #options1 = webdriver.ChromeOptions()
 options1 = Options()
@@ -281,7 +282,7 @@ def handle_text(message):
 
             bot.send_photo(uid, photo=open(photo_path1, 'rb'))
 
-            #driver.quit()
+            driver.quit()
             #os.remove(photo_path)
 
         elif message.text.strip() == 'Врачи':
@@ -304,7 +305,7 @@ def handle_text(message):
                 driver.save_screenshot(photo_path2)
                 send_time2 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path2, 'rb'))
-            #driver.quit()
+            driver.quit()
             #os.remove(photo_path)
                 #answer = random.choice(thinks)
         elif message.text.strip() == 'ВО':
@@ -326,7 +327,7 @@ def handle_text(message):
                 driver.save_screenshot(photo_path3)
                 send_time3 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path3, 'rb'))
-            #driver.quit()
+            driver.quit()
         elif message.text.strip() == 'ОО':
             uid = message.chat.id
             driver = webdriver.Chrome(options=options, service=s)
@@ -346,6 +347,7 @@ def handle_text(message):
                 driver.save_screenshot(photo_path4)
                 send_time4 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path4, 'rb'))
+            driver.quit()
         elif message.text.strip() == 'Дежурный':
             uid = message.chat.id
             driver = webdriver.Chrome(options=options, service=s)
@@ -365,7 +367,7 @@ def handle_text(message):
                 driver.save_screenshot(photo_path5)
                 send_time5 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path5, 'rb'))
-            #driver.quit()
+            driver.quit()
         elif message.text.strip() == 'B2B':
             uid = message.chat.id
             driver = webdriver.Chrome(options=options, service=s)
@@ -385,7 +387,7 @@ def handle_text(message):
                 driver.save_screenshot(photo_path6)
                 send_time6 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path6, 'rb'))
-            # driver.quit()
+            driver.quit()
     #    if message.chat.id == admin[0]:
     #       if message.text.strip() == 'отладка':
         elif message.text.strip() == 'отладка':
@@ -398,6 +400,7 @@ def handle_text(message):
             time.sleep(30)
             driver.save_screenshot(photo_path)
             bot.send_photo(uid, photo=open(photo_path, 'rb'))
+            driver.quit()
         elif message.text.strip() == 'тест':
             uid = message.chat.id
             photo_path = "Image\\" + str(random.randint(10000000, 99999999)) + '.png'
@@ -408,6 +411,7 @@ def handle_text(message):
             time.sleep(10)
             driver.save_screenshot(photo_path)
             bot.send_photo(uid, photo=open(photo_path, 'rb'))
+            driver.quit()
         elif message.text.strip()[:4] == 'All:':
             for user in users4:
                 if users4[user]["status"] == 1:
