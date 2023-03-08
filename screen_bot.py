@@ -274,8 +274,13 @@ def handle_text(message):
                 photo_path1 = "Image\\" + str(random.randint(10000000, 99999999)) + '.png'
 
                 driver.get("https://grafana2.gemotest.ru:3000/d/i_tq1wY7z/glavnaia-2?orgId=1&refresh=5m")
+                try:
+                    driver.set_page_load_timeout(10)
+                except Exception as e:
+                    print(f"Ошибка {e} ({datetime.now()})")
+
                 #driver.get("https://mail.ru/")
-                time.sleep(10)
+                #time.sleep(10)
                 driver.save_screenshot(photo_path1)
                 #global send_time1
                 send_time1 = datetime.now()
@@ -300,8 +305,12 @@ def handle_text(message):
                 photo_path2 = "Image\\" + str(random.randint(10000000, 99999999)) + '.png'
 
                 driver.get("https://grafana2.gemotest.ru:3000/d/WCQ6wTsnz/vrachi?orgId=1&refresh=1m")
+                try:
+                    driver.set_page_load_timeout(10)
+                except Exception as e:
+                    print(f"Ошибка {e} ({datetime.now()})")
                 #driver.get("https://yandex.ru/")
-                time.sleep(10)
+                #time.sleep(10)
                 driver.save_screenshot(photo_path2)
                 send_time2 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path2, 'rb'))
@@ -322,8 +331,12 @@ def handle_text(message):
                 photo_path3 = "Image\\" + str(random.randint(10000000, 99999999)) + '.png'
 
                 driver.get("https://grafana2.gemotest.ru:3000/d/n_7NiLrnk/bvo?orgId=1&refresh=15m")
+                try:
+                    driver.set_page_load_timeout(10)
+                except Exception as e:
+                    print(f"Ошибка {e} ({datetime.now()})")
                 #driver.get("https://yandex.ru/")
-                time.sleep(10)
+                #time.sleep(10)
                 driver.save_screenshot(photo_path3)
                 send_time3 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path3, 'rb'))
@@ -342,8 +355,12 @@ def handle_text(message):
                 photo_path4 = "Image\\" + str(random.randint(10000000, 99999999)) + '.png'
 
                 driver.get("https://grafana2.gemotest.ru:3000/d/-zNr5Zq7z/oo?orgId=1&refresh=1m")
+                try:
+                    driver.set_page_load_timeout(10)
+                except Exception as e:
+                    print(f"Ошибка {e} ({datetime.now()})")
                 #driver.get("https://yandex.ru/")
-                time.sleep(10)
+                #time.sleep(10)
                 driver.save_screenshot(photo_path4)
                 send_time4 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path4, 'rb'))
@@ -362,8 +379,12 @@ def handle_text(message):
                 photo_path5 = "Image\\" + str(random.randint(10000000, 99999999)) + '.png'
 
                 driver.get("https://grafana2.gemotest.ru:3000/d/_xv1gmGVk/dezhurnyi?orgId=1&refresh=30s")
+                try:
+                    driver.set_page_load_timeout(10)
+                except Exception as e:
+                    print(f"Ошибка {e} ({datetime.now()})")
                 # driver.get("https://yandex.ru/")
-                time.sleep(10)
+                #time.sleep(10)
                 driver.save_screenshot(photo_path5)
                 send_time5 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path5, 'rb'))
@@ -382,8 +403,12 @@ def handle_text(message):
                 photo_path6 = "Image\\" + str(random.randint(10000000, 99999999)) + '.png'
 
                 driver.get("https://grafana2.gemotest.ru:3000/d/Dlb_TeI4k/b2b?orgId=1")
+                try:
+                    driver.set_page_load_timeout(10)
+                except Exception as e:
+                    print(f"Ошибка {e} ({datetime.now()})")
                 # driver.get("https://yandex.ru/")
-                time.sleep(10)
+                #time.sleep(10)
                 driver.save_screenshot(photo_path6)
                 send_time6 = datetime.now()
             bot.send_photo(uid, photo=open(photo_path6, 'rb'))
@@ -408,7 +433,11 @@ def handle_text(message):
             driver.set_window_size(1920, 1080)
             #driver.get("https://grafana2.gemotest.ru:3000/d/i_tq1wY7z/glavnaia-2?orgId=1&refresh=5m")
             driver.get("https://yandex.ru/")
-            time.sleep(10)
+            try:
+                driver.set_page_load_timeout(10)
+            except Exception as e:
+                print(f"Ошибка {e} ({datetime.now()})")
+            #time.sleep(10)
             driver.save_screenshot(photo_path)
             bot.send_photo(uid, photo=open(photo_path, 'rb'))
             driver.quit()
